@@ -220,3 +220,74 @@ git push origin main
 | **CLAUDE.md** | 에이전트의 행동 지침 |
 | **schema.md** | 위키 운영 규칙 (충돌 처리, 형식 등) |
 | **ingest → build** | 에이전트 루프의 두 단계 |
+
+---
+
+## 다음 단계: llm-wiki-to-devops
+
+이 레포는 **단일 정적 페이지** 를 출발점으로 삼습니다.
+실제 소프트웨어 개발로 확장하려면 프로젝트 구조, CI/CD, 멀티 아키텍처 대응이 필요합니다.
+그 내용을 다루는 다음 레포를 권장합니다:
+
+> **[llm-wiki-to-devops](https://github.com/machine-artisan/llm-wiki-to-devops)** _(coming soon)_
+
+### llm-wiki-to-devops 에서 다루는 것
+
+- `workspace/` 기반 멀티 프로젝트 관리
+- MSA / Monolithic 아키텍처 비교 실습
+- GitHub Actions CI/CD 파이프라인 구성
+- 브랜치 전략과 자동 배포
+
+### 제안 구조 (llm-wiki-to-devops)
+
+```
+llm-wiki-to-devops/
+├── wiki/                        ← LLM 지식베이스 (이 레포와 동일한 역할)
+│   ├── schema.md
+│   ├── profile.md
+│   ├── stack.md                 ← 기술 스택 및 아키텍처 결정 기록
+│   └── pipelines.md             ← CI/CD 파이프라인 패턴 기록
+│
+├── sources/                     ← 원본 자료 투입
+│
+├── workspace/                   ← 에이전트 작업 공간 (프로젝트별 분리)
+│   │
+│   ├── msa-prj1/                ← MSA 프로젝트 A
+│   │   ├── services/
+│   │   │   ├── auth/            ← 서비스 단위로 독립 배포
+│   │   │   └── api/
+│   │   └── .github/workflows/   ← 서비스별 CI/CD
+│   │
+│   ├── msa-prj2/                ← MSA 프로젝트 B (다른 도메인/팀)
+│   │   ├── services/
+│   │   └── .github/workflows/
+│   │
+│   └── monolithic-prj/          ← Monolithic 프로젝트
+│       ├── src/                 ← 단일 코드베이스
+│       ├── Dockerfile
+│       └── .github/workflows/   ← 전체 빌드 후 단일 배포
+│
+├── docs/                        ← GitHub Pages 전용 (명함·위키 문서 서빙, 빌드 아티팩트 아님)
+│
+├── agent/
+│   ├── ingest.py
+│   ├── build_card.py
+│   └── deploy.py                ← workspace → docs/ 복사 + Pages 배포
+│
+└── CLAUDE.md                    ← 확장된 에이전트 지침
+```
+
+### MSA vs Monolithic 을 함께 두는 이유
+
+두 아키텍처는 대립 관계가 아니라 **용도에 따른 선택지**입니다.
+
+| | Monolithic | MSA |
+|--|--|--|
+| 초기 개발 속도 | 빠름 | 느림 |
+| 서비스 독립 배포 | 불가 | 가능 |
+| 팀 규모 | 소규모 적합 | 중·대규모 적합 |
+| 인프라 복잡도 | 낮음 | 높음 |
+| DevOps 파이프라인 | 단순 (전체 빌드) | 복잡 (서비스별 빌드) |
+
+LLM 에이전트가 두 구조를 모두 wiki 로 관리하면,
+어떤 프로젝트에서 어떤 아키텍처를 선택해야 하는지 **패턴을 스스로 축적**할 수 있습니다.
