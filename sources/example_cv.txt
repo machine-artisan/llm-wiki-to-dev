@@ -1,0 +1,13 @@
+# 예시 소스 파일 — CV 요약
+
+이름: 홍길동
+소속: AI Research Lab, 한국대학교
+역할: LLM Engineer / Researcher
+
+최근 활동:
+- 멀티에이전트 프레임워크 프로토타입 개발 (2026)
+- LLM 기반 자동 위키 구축 연구 논문 준비 중
+- 관심 분야: Retrieval-Augmented Generation, Memory Architecture
+
+목표 추가:
+- 멀티에이전트 협업 프레임워크 오픈소스 공개

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>홍길동 | 소개</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --accent: #6c63ff;
+      --accent2: #48cfad;
+      --text: #e8eaf6;
+      --muted: #9e9eb5;
+      --border: rgba(108, 99, 255, 0.2);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 8px 40px rgba(108, 99, 255, 0.12);
+      text-align: center;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.3rem;
+    }
+
+    .affiliation {
+      font-size: 0.95rem;
+      color: var(--accent2);
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .role {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 1.75rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .goals {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .goals li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .goals li::before {
+      content: '▹';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .links {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      background: transparent;
+    }
+
+    .link-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(108, 99, 255, 0.08);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.25rem;
+      }
+      .name {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar">홍</div>
+
+    <div class="name">홍 길 동</div>
+    <div class="affiliation">AI Research Lab · 한국대학교</div>
+    <div class="role">LLM Engineer / Researcher</div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Goals</div>
+    <ul class="goals">
+      <li>LLM 기반 에이전트 시스템 연구 및 실용화</li>
+      <li>오픈소스 AI 도구 생태계 기여</li>
+      <li>누구나 활용할 수 있는 AI 지식 공유</li>
+    </ul>
+
+    <div class="links">
+      <a class="link-btn" href="https://github.com/username" target="_blank">GitHub</a>
+      <a class="link-btn" href="mailto:user@example.com">Email</a>
+    </div>
+  </div>
+</body>
+</html>
