@@ -1,4 +1,4 @@
-# llm-wiki × GitHub Pages
+# llm-wiki-to-dev × GitHub Pages
 
 > **Agentic Thinking 입문 예제**
 > LLM 에이전트가 지식베이스를 스스로 관리하고, 그 결과로 명함 페이지를 만든다.
@@ -30,7 +30,7 @@ Andrej Karpathy의 [llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e
 ## 구조
 
 ```
-llm-wiki/
+llm-wiki-to-dev/
 ├── CLAUDE.md              ← 에이전트 행동 지침 (핵심)
 ├── wiki/
 │   ├── schema.md          ← 위키 운영 규칙
@@ -50,8 +50,8 @@ llm-wiki/
 ## 빠른 시작
 
 ```bash
-git clone https://github.com/<username>/llm-wiki.git
-cd llm-wiki
+git clone https://github.com/<username>/llm-wiki-to-dev.git
+cd llm-wiki-to-dev
 
 # 1. 설치
 make setup
@@ -76,7 +76,7 @@ make serve
 Claude Code 를 설치하고 이 폴더에서 실행하면 에이전트가 지침을 읽고 바로 동작합니다.
 
 ```bash
-cd llm-wiki
+cd llm-wiki-to-dev
 claude
 ```
 
@@ -95,21 +95,21 @@ claude
 먼저 GitHub 서버에 라우팅 규칙을 등록해야 합니다.
 
 ```
-POST https://api.github.com/repos/machine-artisan/llm-wiki/pages
+POST https://api.github.com/repos/machine-artisan/llm-wiki-to-dev/pages
      {"source": {"branch": "main", "path": "/"}}
 
 ← 응답:
-   html_url:   https://machine-artisan.github.io/llm-wiki/
+   html_url:   https://machine-artisan.github.io/llm-wiki-to-dev/
    build_type: legacy
    source:     {branch: main, path: /}
 ```
 
 이 설정은 **레포 파일이 아닌 GitHub 내부 DB** 에 저장됩니다.
-`html_url` 의 경로(`/llm-wiki`) 는 이때 **레포 이름으로부터 자동 결정**되며,
+`html_url` 의 경로(`/llm-wiki-to-dev`) 는 이때 **레포 이름으로부터 자동 결정**되며,
 GitHub CDN 의 라우팅 테이블에 다음 규칙이 등록됩니다:
 
 ```
-machine-artisan.github.io/llm-wiki/* → 이 레포의 main 브랜치 /
+machine-artisan.github.io/llm-wiki-to-dev/* → 이 레포의 main 브랜치 /
 ```
 
 ---
@@ -149,13 +149,13 @@ git push origin main
        │                              │  GitHub CDN (Fastly)     │
        │                              │                         │
        │                              │  등록된 라우팅 규칙 참조:  │
-       │                              │  /llm-wiki/* → main:/   │
+       │                              │  /llm-wiki-to-dev/* → main:/   │
        │                              │                         │
        │                              │  엣지 노드 파일 동기화    │
        │                              └────────────┬────────────┘
        │                                           │
        └─ Actions ──────────────────────┐          ▼
-          .github/workflows/*.yml 트리거 │   https://machine-artisan.github.io/llm-wiki/
+          .github/workflows/*.yml 트리거 │   https://machine-artisan.github.io/llm-wiki-to-dev/
           Runner 에서 빌드 실행           │   (통상 30초 ~ 2분 후 반영)
           deploy-pages 액션으로 업로드   │
           ──────────────────────────────┘
@@ -190,7 +190,7 @@ Hugo / Jekyll (커스텀) → 정적 사이트 생성기 → public/ 를 배포
 | 레포 이름 | 배포 URL | 비고 |
 |-----------|----------|------|
 | `machine-artisan.github.io` | `https://machine-artisan.github.io/` | User site (루트) |
-| `llm-wiki` | `https://machine-artisan.github.io/llm-wiki/` | Project site |
+| `llm-wiki-to-dev` | `https://machine-artisan.github.io/llm-wiki-to-dev/` | Project site |
 | `my-blog` | `https://machine-artisan.github.io/my-blog/` | Project site |
 
 레포 이름이 곧 URL 경로입니다. Pages 활성화 시점에 GitHub 라우팅 테이블에 자동 등록되며
@@ -206,7 +206,7 @@ git add wiki/ index.html
 git commit -m "update: 내용 변경"
 git push origin main
 # push 이벤트 → Pages 빌드 서비스 수신 → CDN 엣지 동기화
-# → https://machine-artisan.github.io/llm-wiki/ 반영
+# → https://machine-artisan.github.io/llm-wiki-to-dev/ 반영
 ```
 
 ---

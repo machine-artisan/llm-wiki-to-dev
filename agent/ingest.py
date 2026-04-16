@@ -58,7 +58,7 @@ def ingest(source_path: str) -> None:
 
     client = anthropic.Anthropic()
 
-    system_prompt = f"""당신은 llm-wiki 에이전트입니다.
+    system_prompt = f"""당신은 llm-wiki-to-dev 에이전트입니다.
 아래 스키마 규칙에 따라 위키 페이지를 업데이트하세요.
 
 === schema.md ===

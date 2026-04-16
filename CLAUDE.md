@@ -1,11 +1,11 @@
-# CLAUDE.md — llm-wiki 에이전트 지침
+# CLAUDE.md — llm-wiki-to-dev 에이전트 지침
 
 이 파일은 Claude Code 에이전트가 이 레포에서 어떻게 행동해야 하는지 정의합니다.
 이 레포를 클론하고 `claude` 를 실행하면 에이전트는 이 지침을 따라 동작합니다.
 
 ## 이 프로젝트가 하는 일
 
-llm-wiki 패턴을 사용해 개인 GitHub Pages 명함 페이지를 관리합니다.
+llm-wiki-to-dev 패턴을 사용해 개인 GitHub Pages 명함 페이지를 관리합니다.
 
 ```
 [sources/] → ingest → [wiki/*.md] → build → [index.html] → GitHub Pages
@@ -53,7 +53,7 @@ cp .env.example .env
 # .env 에 ANTHROPIC_API_KEY 입력
 ```
 
-## 핵심 원칙 (llm-wiki 철학)
+## 핵심 원칙 (llm-wiki-to-dev 철학)
 
 - 위키는 영속적으로 축적된다. 매번 원본을 재처리하지 않는다.
 - 에이전트는 위키를 읽고 쓴다. 소스는 한 번만 처리된다.
